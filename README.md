@@ -47,7 +47,7 @@ POST */api/create/users*
 	--header 'Content-Type: application/json' \
 	--data '{"username":"test_admin","password":"python", "isAdmin": true   }'
 
-    Register a new user. For admin users we have to provide isAdmin flag 'True'. isAdmin flag is optional and default value is False. It means non-admin user. Only admin user can approve the loan and non admin user can apply for loan and repay the EMIs.
+Register a new user. For admin users we have to provide isAdmin flag 'True'. isAdmin flag is optional and default value is False. It means non-admin user. Only admin user can approve the loan and non admin user can apply for loan and repay the EMIs.
     
     
 POST */api/user/getLoan*
@@ -57,7 +57,7 @@ POST */api/user/getLoan*
 	--header 'Authorization: Basic dGVzdF91c2VyOnB5dGhvbg==' \
 	--data '{"amount": 6000,"term": 3}'
 
-    Only Non-admin users can create loan. It will create a loan entry in our Database with pending state. Only Admin user can approve it. After approval user can repay the EMIs
+Only Non-admin users can create loan. It will create a loan entry in our Database with pending state. Only Admin user can approve it. After approval user can repay the EMIs
     
 GET */api/user/viewLoan*
 
@@ -66,7 +66,7 @@ GET */api/user/viewLoan*
 	--header 'Authorization: Basic dGVzdF91c2VyOnB5dGhvbg==' \
 	--data '{"status": "pending"}'
 
-    Only Non-admin users can view their loans. It will show the loans as per the status provided. If status not provided it will show all the loans belong to the user.
+Only Non-admin users can view their loans. It will show the loans as per the status provided. If status not provided it will show all the loans belong to the user.
     
 POST */api/user/approveLoan*
 
@@ -75,7 +75,7 @@ POST */api/user/approveLoan*
 	--header 'Authorization: Basic dGVzdF9hZG1pbjpweXRob24=' \
 	--data '{"id": 1}'
 
-    Only admin users can any loan as per the ID provided. It will change the status of given loan from pending to approved. It will create weekly EMIs as for the given term. For above curl it will create 3 EMIs for 2000, first EMI starts from next week. We will create EMIs entry in the EMI table as pending-status.
+Only admin users can any loan as per the ID provided. It will change the status of given loan from pending to approved. It will create weekly EMIs as for the given term. For above curl it will create 3 EMIs for 2000, first EMI starts from next week. We will create EMIs entry in the EMI table as pending-status.
     
 POST /api/user/repayLoan**
 
@@ -84,7 +84,7 @@ POST /api/user/repayLoan**
 	--header 'Authorization: Basic dGVzdF91c2VyOnB5dGhvbg==' \
 	--data '{"id": "1", "amount": 4000}'
 
-    Only Non-admin users can repay the loan's EMI. It will change the status of given loan's upcoming EMI status from pending to paid. Once last EMI is paid we update the loan status from approved to paid in loan table.
+Only Non-admin users can repay the loan's EMI. It will change the status of given loan's upcoming EMI status from pending to paid. Once last EMI is paid we update the loan status from approved to paid in loan table.
 
 
 
